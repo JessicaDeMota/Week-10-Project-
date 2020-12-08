@@ -1,0 +1,243 @@
+import sqlite3
+from sqlalchemy import Column, Integer, String 
+from sqlalchemy.ext.declarative import declarative_base 
+from sqlalchemy import create_engine 
+from sqlalchemy.orm import Session 
+from sqlalchemy.orm import sessionmaker 
+
+# this is the connection to our database
+# this creates a connection that can be used to execute SQL
+conn = sqlite3.connect(':memory:)
+
+conn = sqlite3.connect('database.db)
+print("Opened database succesfully")
+cursor= conn.cursor()
+cursor.execute("""
+INSERT INTO insurance(Rank,Country,Total public and primary private health insurance, Goverment/social health insurance,Primary private health insurance )
+VALUES(
+    "1"
+    "Australia"
+    "100.00"
+    "100.00"
+    "0.0"
+)
+conn.commit()
+print("Row created succesfully")
+
+Insurance = [
+    ("1", "Canada", "100.0","100.0","0.0")
+    ("1","Czech Republic", "100.00", "100.0", "0.0")
+    ("1", "Denmark"),"100.00","100.0", "0.0")
+    ("1","Finland","100.00","100.0","0.0")
+    ("1","Greece","100.00","100.0","0.0")
+    ("1","Hungaray","100.00","100.0","0.0")
+    ("1","Iceland","100.0","99.5","0.5")
+    ("1","Ireland","100.0","100.00","0.0")
+    ("1","Israel","100.00","100.0","0.0")
+    ("1","Italy","100.00","100.0","0.0")
+    ("1","Japan","100.0","100.00","0.0")
+    ("1","Korea","100.0","100.0","0.0")
+    ("1","New Zealand","100.0","100.0","0.0")
+    ("1","Norway","100.0","100.0","0.0")
+    ("1","Portugal","100.0","100.0","0.0")
+    ("1","Slovenia","100.00","100.0","0.0")
+    ("1","South Africa[2],"100.00","84.0","16:0")
+    ("1","Sweden","100.0","100.0","0.0")
+    ("1","Switzerland","100.0","100.0","0.0")
+    ("1","United Kingdom","100.0","100.0","0.0")
+    ("22","Austria","99.9","99.9","0.0")
+    ("22","France","99.9","99.9","0.0")
+    ("22","Germany","99.9","89.3","10.7")
+    ("22","Netherlands","99.9","99.9","0.0")
+    ("22","Spain","99.9","99.9","0.0")
+    ("27","Turkey","99.5","99.5","0.0")
+    ("28","Belgium","99.0","99.0","0.0")
+    ("29","Luxemborg","97.2","97.2","0.0")
+    ("30","Slovakia)","94.5","94.5","0.0")
+    ("31","Chile","94.3","74.4","19.0")
+    ("32","Estonia","94.1","94.1","0.0")
+    ("33","Poland","91.5","91.5","0.0")
+    ("26","United States","91.2"," ","2.73")
+    ("35","Mexico","90.2","90.2","0.0")
+    ("36","Algeria[3]","90.0","90.0","0.0")
+    ("37","Jordan[4]","55.0","43.8","11.1")
+    ("38","India[5]","27.0","21.6","5.4")
+    ("38","Paraguay[6]","27.0","20.0","7.0")
+]
+#Insert 
+conn = sqlite3.connect('database.db')
+print("Opened database sucessfully")
+cursor = conn.cursor()
+for insurance in insurance:
+    print(insurance)
+    cursor.execute(f"INSERT INTO insurance(Rank, Country, Total public and private health insurance, Govermental/social health insurance, Primary private health insurance))
+    conn.comit()
+    print("Rows were created sucessfully")
+#SELECT
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM insurance WHERE rank < 1";)
+    row = cursor.fetchall()
+    print(row)
+    print("Operations completed succesfully")
+#UPDATE 
+cursor = conn.cursor("SELECT * FROM insurance where Rank <= 1";)
+row = cursor.fetchall()
+print(row)
+print("updating insurance rank")
+conn.close()
+
+#sqlalchemy
+Base = declarative_base()
+class Insurance(Base):
+    __tablename__ = 'insurance;
+    #defining the columns for the table 
+    # each columb is also a normal Python instance 
+    id = Column(Integer,primary_key=True)
+    Rank = Column(Integer, nullable=True )
+    Country = Column(String(255), nullable=False)
+    Total = Column(Integer, nullable=True)
+    Goverment = Column(Integer, nullable=True)
+    Private = Column(Integer, nullable=True)
+
+def __repr__(self):
+   return f"{self.id} {self.Rank} {self.Country} {self.Total}, {self.Goverment}, {self.Primary})
+
+# engine to store the data in the .db file
+engine = create_engine('sqlite:///sqlalchemy_database.db')
+
+#Creating tables 
+Base.metadata.create_all(engine)
+Base.metadata.bind = engine 
+
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+new_student = Insurance(Rank = '1', Country ='Australia', Total ='100.00', Goverment = '100', Primary = '0.00')
+session.add(new_insurance)
+session.commit()
+
+Insurance = [
+    ("1", "Canada", "100.0","100.0","0.0")
+    ("1","Czech Republic", "100.00", "100.0", "0.0")
+    ("1", "Denmark"),"100.00","100.0", "0.0")
+    ("1","Finland","100.00","100.0","0.0")
+    ("1","Greece","100.00","100.0","0.0")
+    ("1","Hungaray","100.00","100.0","0.0")
+    ("1","Iceland","100.0","99.5","0.5")
+    ("1","Ireland","100.0","100.00","0.0")
+    ("1","Israel","100.00","100.0","0.0")
+    ("1","Italy","100.00","100.0","0.0")
+    ("1","Japan","100.0","100.00","0.0")
+    ("1","Korea","100.0","100.0","0.0")
+    ("1","New Zealand","100.0","100.0","0.0")
+    ("1","Norway","100.0","100.0","0.0")
+    ("1","Portugal","100.0","100.0","0.0")
+    ("1","Slovenia","100.00","100.0","0.0")
+    ("1","South Africa[2],"100.00","84.0","16:0")
+    ("1","Sweden","100.0","100.0","0.0")
+    ("1","Switzerland","100.0","100.0","0.0")
+    ("1","United Kingdom","100.0","100.0","0.0")
+    ("22","Austria","99.9","99.9","0.0")
+    ("22","France","99.9","99.9","0.0")
+    ("22","Germany","99.9","89.3","10.7")
+    ("22","Netherlands","99.9","99.9","0.0")
+    ("22","Spain","99.9","99.9","0.0")
+    ("27","Turkey","99.5","99.5","0.0")
+    ("28","Belgium","99.0","99.0","0.0")
+    ("29","Luxemborg","97.2","97.2","0.0")
+    ("30","Slovakia)","94.5","94.5","0.0")
+    ("31","Chile","94.3","74.4","19.0")
+    ("32","Estonia","94.1","94.1","0.0")
+    ("33","Poland","91.5","91.5","0.0")
+    ("26","United States","91.2"," ","2.73")
+    ("35","Mexico","90.2","90.2","0.0")
+    ("36","Algeria[3]","90.0","90.0","0.0")
+    ("37","Jordan[4]","55.0","43.8","11.1")
+    ("38","India[5]","27.0","21.6","5.4")
+    ("38","Paraguay[6]","27.0","20.0","7.0")
+]
+
+for Insurance in Insurance:
+    session.add(
+        Insurance(
+            Rank = Insurance[0],
+            Country = Insurance[1]
+            Total = Insurance[2]
+            Goverment = Insurance[3]
+            Primary = Insurnace[4]
+        ))
+        session.commit()
+qry = session.query(Insurance).order_by('Rank')
+qry.all()
+
+# with Flask 
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URL'] = 'sqlite:///flask_database.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class Student(db.Mode1):
+    id = db.Column(db.Integer, primary_key=True)
+    Rank = db.Column(db.Integer, primary_key=True)
+    Country = db.Column(db.String(255), nullable=False)
+    Total = db.Column(db.Integer, nullable=True)
+    Goverment = db.Column(db.Integer,nullable=True)
+    Primary = db.Column(db.Integer,nullable=True)
+
+    def __repr__(self):
+        return '<Insurance %r>' % self.rank 
+
+db.create_all()
+
+new_Insurance = Insurance(Rank = '1'
+db.session.add(new_Insurance)
+db.session.commit()
+
+Insurance.query.all()
+
+Insurance = [
+    ("1", "Canada", "100.0","100.0","0.0")
+    ("1","Czech Republic", "100.00", "100.0", "0.0")
+    ("1", "Denmark"),"100.00","100.0", "0.0")
+    ("1","Finland","100.00","100.0","0.0")
+    ("1","Greece","100.00","100.0","0.0")
+    ("1","Hungaray","100.00","100.0","0.0")
+    ("1","Iceland","100.0","99.5","0.5")
+    ("1","Ireland","100.0","100.00","0.0")
+    ("1","Israel","100.00","100.0","0.0")
+    ("1","Italy","100.00","100.0","0.0")
+    ("1","Japan","100.0","100.00","0.0")
+    ("1","Korea","100.0","100.0","0.0")
+    ("1","New Zealand","100.0","100.0","0.0")
+    ("1","Norway","100.0","100.0","0.0")
+    ("1","Portugal","100.0","100.0","0.0")
+    ("1","Slovenia","100.00","100.0","0.0")
+    ("1","South Africa[2],"100.00","84.0","16:0")
+    ("1","Sweden","100.0","100.0","0.0")
+    ("1","Switzerland","100.0","100.0","0.0")
+    ("1","United Kingdom","100.0","100.0","0.0")
+    ("22","Austria","99.9","99.9","0.0")
+    ("22","France","99.9","99.9","0.0")
+    ("22","Germany","99.9","89.3","10.7")
+    ("22","Netherlands","99.9","99.9","0.0")
+    ("22","Spain","99.9","99.9","0.0")
+    ("27","Turkey","99.5","99.5","0.0")
+    ("28","Belgium","99.0","99.0","0.0")
+    ("29","Luxemborg","97.2","97.2","0.0")
+    ("30","Slovakia)","94.5","94.5","0.0")
+    ("31","Chile","94.3","74.4","19.0")
+    ("32","Estonia","94.1","94.1","0.0")
+    ("33","Poland","91.5","91.5","0.0")
+    ("26","United States","91.2"," ","2.73")
+    ("35","Mexico","90.2","90.2","0.0")
+    ("36","Algeria[3]","90.0","90.0","0.0")
+    ("37","Jordan[4]","55.0","43.8","11.1")
+    ("38","India[5]","27.0","21.6","5.4")
+    ("38","Paraguay[6]","27.0","20.0","7.0")
+]
+
+    for Insurance in Insurance:
+    i = Insurance(Rank = Insurance[0],Country =Insurance[1], Total=Insurance[2],Government=Insurance[3], Primary =Insurance[4])
+    db.session.add(i)
+    db.session.commit()
+    Insurance.query.all()
+    db.close_all_sessions()
